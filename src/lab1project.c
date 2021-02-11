@@ -1,12 +1,15 @@
 #include <stdio.h>
+#define LIMIT 100
 
-void main(){
-  int c;
-  printf("$");
-  c = getchar();
-  while(c != EOF){
-    putchar(c);
-    c = getchar();
+int main(){
+  char charArray[LIMIT];
+  
+  int i = 0;
+  
+  for(char inputChar; (inputChar = getchar()) != '\n' && i < LIMIT; i++){
+    charArray[i] = inputChar;
+    putchar(inputChar);
   }
+  printf("\n");
   
 }
