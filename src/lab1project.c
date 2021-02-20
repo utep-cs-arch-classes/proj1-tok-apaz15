@@ -7,11 +7,15 @@ int main(){
 
   int i = 0;
   
-  for(char inputChar; (inputChar = getchar()) != '\n' && LIMIT > i; i++){
+  for(char inputChar; (inputChar = getchar()) != '\n' && i < LIMIT - 1; i++){
     charArray[i] = inputChar;
     putchar(inputChar);
  }
   charArray[i] = '\0';
   printf("\n");
+  char *pointer = word_start(charArray);
+  printf("%c\n", *pointer);
+  char *endPoint = word_end(charArray);
+  printf("%c\n", *endPoint);
 }
 
