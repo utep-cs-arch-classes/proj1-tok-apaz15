@@ -11,14 +11,7 @@ int main(){
     charArray[i] = inputChar;
     putchar(inputChar);
  }
-  printf("\n");  
+  charArray[i] = '\0';
+  printf("\n");
 }
 
-int space_char(char c){
-  if(c == ' ' || c == '\n' || c == '\t')
-    return 1;
-}
-int non_space_char(char c){
-  if(c != ' ' || c != '\n' || c != '\t')
-    return 1;
-}
