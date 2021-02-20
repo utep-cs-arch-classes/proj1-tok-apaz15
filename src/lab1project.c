@@ -17,5 +17,7 @@ int main(){
   printf("%c\n", *pointer);
   char *endPoint = word_end(charArray);
   printf("%c\n", *endPoint);
+  int counter = count_words(charArray);
+  printf("%d\n", counter);
 }
 

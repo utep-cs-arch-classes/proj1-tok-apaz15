@@ -29,3 +29,11 @@ char *word_end(char *str){
 
   return --str;
 }
+int count_words(char *str){
+  int counter = 1;
+  for(; *str != '\0'; str++){
+    if(space_char(*str))
+      counter++;
+  }
+  return counter;
+}
