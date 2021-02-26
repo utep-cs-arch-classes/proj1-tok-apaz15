@@ -1,23 +1,31 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "tokenizer.h"
 #define LIMIT 100
+char c;
 
 int main(){
-  char charArray[LIMIT];
 
-  int i = 0;
+  int i;
+
+  while(1){
+    char *inputPointer = (char*)malloc(LIMIT);
+    for(i = 0; (c = getchar()) != '\n' && i < LIMIT - 1; i++){
+      *(inputPointer + i) = c;
+    }
+    *(inputPointer + i) = '\0';
+
   
-  for(char inputChar; (inputChar = getchar()) != '\n' && i < LIMIT - 1; i++){
-    charArray[i] = inputChar;
-    putchar(inputChar);
- }
-  charArray[i] = '\0';
-  printf("\n");
-  char *pointer = word_start(charArray);
-  printf("%c\n", *pointer);
-  char *endPoint = word_end(charArray);
-  printf("%c\n", *endPoint);
-  int counter = count_words(charArray);
+  char *start = word_start(inputPointer);
+  printf("%c\n", *start);
+
+  char *end = word_end(inputPointer);
+  printf("%c\n", *end);
+
+  int counter = count_words(inputPointer);
   printf("%d\n", counter);
+
+  }
+
 }
 
