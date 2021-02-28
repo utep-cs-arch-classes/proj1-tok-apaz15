@@ -6,26 +6,37 @@ char c;
 
 int main(){
 
+  char input[LIMIT];
+  char **doublePointer;
+
   int i;
 
-  while(1){
-    char *inputPointer = (char*)malloc(LIMIT);
-    for(i = 0; (c = getchar()) != '\n' && i < LIMIT - 1; i++){
-      *(inputPointer + i) = c;
-    }
-    *(inputPointer + i) = '\0';
+  for(;(c = getchar()) != '\n' && i < LIMIT - 1; i++){
+    input[i] = c;
+    putchar(c);
+  }
+  input[i + 1] = '0';
+  printf("\n");
+
+  char *pointer = input;
+  doublePointer = &pointer;
 
   
-  char *start = word_start(inputPointer);
+  char *start = word_start(pointer);
   printf("%c\n", *start);
 
-  char *end = word_end(inputPointer);
+  char *end = word_end(pointer);
   printf("%c\n", *end);
 
-  int counter = count_words(inputPointer);
+  int counter = count_words(pointer);
   printf("%d\n", counter);
 
-  }
+  char *copy = copy_str(pointer, 3);
+  printf("%s\n", copy);
+
+  print_tokens(doublePointer);
+
+ 
 
 }
 

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "tokenizer.h"
 
 int f(){
@@ -36,4 +37,22 @@ int count_words(char *str){
       counter++;
   }
   return counter;
+}
+char *copy_str(char *src, short len){
+  int i;
+  char *pointer =  (char*)malloc(sizeof(char) * (len + 1));
+
+  for(i = 0; i < len && *src != '\0'; i++){
+    *(pointer + i) = *(src + i);
+  }
+  *(pointer + i) = '\0';
+
+  return pointer;
+}
+void print_tokens(char **tokens){
+  int i = 0;
+  while(*(tokens + i) != 0){
+    printf("%s\n", *(tokens + i));
+    i++;
+  }
 }
