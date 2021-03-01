@@ -22,11 +22,11 @@ char *word_start(char *str){
   return str;
 }
 char *word_end(char *str){
-  while(non_space_char(*str)){
+  if(space_char(*str))
+    str = word_start(str);
+  while(non_space_char(*str) && *str != 0){
     str++;
   }
-  if(*str == '\0')
-    return 0;
 
   return --str;
 }
@@ -55,4 +55,26 @@ void print_tokens(char **tokens){
     printf("%s\n", *(tokens + i));
     i++;
   }
+}
+char **tokenize(char *s){
+  int numOfWords = count_words(s);
+  char **doublePointer = (char**)malloc(sizeof(char) * numOfWords + 1);
+  doublePointer[numOfWords + 1] = 0;
+
+  int i = 0;
+  short len;
+
+  for(; i < numOfWords; i++){
+    len = word_end(s) - word_start(s);
+    doublePointer[i] = copy_str(s, len + 1);
+  }
+  return doublePointer;
+}
+void free_tokens(char **toks){
+  int i;
+
+  for(i = 0; toks[i] != 0; i++)
+    free(toks[i]);
+
+  free(toks);
 }

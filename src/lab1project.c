@@ -15,28 +15,12 @@ int main(){
     input[i] = c;
     putchar(c);
   }
-  input[i + 1] = '0';
+  input[i + 1] = '\0';
   printf("\n");
 
-  char *pointer = input;
-  doublePointer = &pointer;
-
-  
-  char *start = word_start(pointer);
-  printf("%c\n", *start);
-
-  char *end = word_end(pointer);
-  printf("%c\n", *end);
-
-  int counter = count_words(pointer);
-  printf("%d\n", counter);
-
-  char *copy = copy_str(pointer, 3);
-  printf("%s\n", copy);
-
+  doublePointer = tokenize(input);
+  printf("Tokenizing\n");
   print_tokens(doublePointer);
-
- 
 
 }
 
