@@ -9,7 +9,7 @@ int main(){
   char input[LIMIT];
   char **doublePointer;
 
-  int i;
+  int i = 0;
 
   for(;(c = getchar()) != '\n' && i < LIMIT - 1; i++){
     input[i] = c;

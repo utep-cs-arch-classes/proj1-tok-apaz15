@@ -28,7 +28,7 @@ char *word_end(char *str){
     str++;
   }
 
-  return --str;
+  return str;
 }
 int count_words(char *str){
   int counter = 1;
@@ -51,23 +51,25 @@ char *copy_str(char *src, short len){
 }
 void print_tokens(char **tokens){
   int i = 0;
-  while(*(tokens + i) != 0){
-    printf("%s\n", *(tokens + i));
+  while(tokens[i] != 0){
+    printf("%s\n", tokens[i]);
     i++;
   }
 }
 char **tokenize(char *s){
   int numOfWords = count_words(s);
-  char **doublePointer = (char**)malloc(sizeof(char) * numOfWords + 1);
-  doublePointer[numOfWords + 1] = 0;
+  char **doublePointer = (char**)malloc(sizeof(char*) * numOfWords + 1);
+ 
 
-  int i = 0;
+  int i;
   short len;
 
-  for(; i < numOfWords; i++){
+  for(i = 0; i < numOfWords; i++){
     len = word_end(s) - word_start(s);
     doublePointer[i] = copy_str(s, len + 1);
+    s = word_end(s);
   }
+  doublePointer[i] = '\0';
   return doublePointer;
 }
 void free_tokens(char **toks){
@@ -78,3 +80,4 @@ void free_tokens(char **toks){
 
   free(toks);
 }
+
