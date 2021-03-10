@@ -28,5 +28,7 @@ int main(){
   doublePointer = tokenize(input);
   printf("Tokenizing\n");
   print_tokens(doublePointer);
+
+  free(doublePointer);
 }
 
