@@ -12,6 +12,7 @@ int main(){
   List *history = init_history();
 
   int i = 0;
+  printf("$ ");
 
   for(;(c = getchar()) != '\n' && i < LIMIT - 1; i++){
     input[i] = c;
@@ -20,8 +21,12 @@ int main(){
   input[i + 1] = '\0';
   printf("\n");
 
+  int numOfWords = count_words(input);
+  printf("Number of words: %d\n", numOfWords);
+
+  printf("Get history\n");
   add_history(history, input);
-  add_history(history, "Jackie");
+  // add_history(history, "Hi Alex");
   char *c = get_history(history, 0);
   printf("%s\n", c);
 
