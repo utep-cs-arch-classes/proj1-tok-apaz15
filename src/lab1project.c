@@ -22,18 +22,20 @@ int main(){
   printf("\n");
 
   int numOfWords = count_words(input);
-  printf("Number of words: %d\n", numOfWords);
+  printf("\nNumber of words: %d\n", numOfWords);
 
-  printf("Get history\n");
+  printf("\nGet history\n");
   add_history(history, input);
   // add_history(history, "Hi Alex");
   char *c = get_history(history, 0);
   printf("%s\n", c);
+  // print_history(history);
 
   doublePointer = tokenize(input);
-  printf("Tokenizing\n");
+  printf("\nTokenizing\n");
   print_tokens(doublePointer);
 
   free(doublePointer);
+  free_history(history);
 }
 

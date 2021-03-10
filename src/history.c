@@ -35,10 +35,14 @@ char *get_history(List *list, int id){
 }
 
 void print_history(List *list){
-  
+  Item *temp = list -> root;
+  while(temp -> next != NULL){
+    printf("%s\n", temp -> str);
+    temp = temp -> next;
+  }
 }
 
 void free_history(List *list){
-  
+  free(list);
 }
 
